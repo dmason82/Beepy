@@ -6,6 +6,9 @@ import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,14 +16,23 @@ import android.widget.Toast;
 
 public class Homework004Activity extends Activity implements OnClickListener {
 	Intent i;
+	Handler handler;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       handler =new Handler()
+        {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+            }
+        };
         setContentView(R.layout.main);
         Button b =(Button) findViewById(R.id.button1);
         b.setOnClickListener(this);
-       i = new Intent().setClass(getApplicationContext(), BeepService.class);
+       i = new Intent(this,BeepService.class);
+       i.putExtra("handler",new Messenger(handler));
     }
 
 	@Override
