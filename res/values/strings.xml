@@ -2,7 +2,9 @@
 <resources>
 
     <string name="hello">Hello World, Homework004Activity!</string>
-    <string name="app_name">Tasks</string>
+    <string name="app_name">Homework 004</string>
     <string name="buttonText">Start</string>
+    <string name="started">Homework 004 is currently beeping</string>
+    <string name="service_label">Homework 004</string>
 
 </resources>

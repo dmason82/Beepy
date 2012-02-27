@@ -6,33 +6,22 @@ import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class Homework004Activity extends Activity implements OnClickListener {
-	Intent i;
-	Handler handler;
+	Intent i;;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       handler =new Handler()
-        {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-            }
-        };
         setContentView(R.layout.main);
         Button b =(Button) findViewById(R.id.button1);
         b.setOnClickListener(this);
        i = new Intent(this,BeepService.class);
-       i.putExtra("handler",new Messenger(handler));
+      // i.putExtra("handler",new Messenger(handler));
     }
 
 	@Override
@@ -54,9 +43,9 @@ public class Homework004Activity extends Activity implements OnClickListener {
 				startService(i);
 			}
 			break;
-		}
-		
+		}	
 	}
+	//returns as to whether or not our beep service is running.
 	private boolean serviceRunning(){
 		ActivityManager manager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
 		for(RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)){
@@ -66,5 +55,15 @@ public class Homework004Activity extends Activity implements OnClickListener {
 		}
 		return false;
 	}
-
+	/**Need to check for whether or not our Service is running because onResume() will normally load the text for our button based on our resources and not
+	 * based on our actual service state.
+	*/
+	public void onResume(){
+		if(serviceRunning())
+		{
+			Button b =(Button) findViewById(R.id.button1);
+			b.setText("Stop");
+		}
+		super.onResume();
+	}
 }
