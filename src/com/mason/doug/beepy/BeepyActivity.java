@@ -1,4 +1,4 @@
-package aad.uw.CP210.hw004;
+package com.mason.doug.beepy;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Homework004Activity extends Activity implements OnClickListener {
+public class BeepyActivity extends Activity implements OnClickListener {
 	Intent i;;
     /** Called when the activity is first created. */
     @Override

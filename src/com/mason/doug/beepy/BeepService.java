@@ -1,5 +1,4 @@
-package aad.uw.CP210.hw004;
-
+package com.mason.doug.beepy;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -66,7 +65,7 @@ public class BeepService extends Service {
 		        Notification notification = new Notification(R.drawable.ic_launcher, description,
 		                System.currentTimeMillis());
 		        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-		                new Intent(this, Homework004Activity.class), 0);
+		                new Intent(this, BeepyActivity.class), 0);
 		        // Set the info for the views that show in the notification panel.
 		        notification.setLatestEventInfo(this, getText(R.string.service_label),
 		                       description, contentIntent);
